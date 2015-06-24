@@ -26,8 +26,8 @@
 
 /* http hostname */
 $host  = $_SERVER['HTTP_HOST'];
-/* base address without host and filename (the pattern removes the filename)*/
-$folder = preg_replace('/\/[a-zA-Z_-]*$/', '', dirname($_SERVER['PHP_SELF']));
+/* base address without host and filename */
+$folder = rtrim(dirname($_SERVER['PHP_SELF']), "/");
 /* protocol */
 if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS']) == 'ON')
     $protocol = "https";

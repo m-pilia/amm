@@ -234,10 +234,9 @@ class FrontController {
                 $protocol = "http";
             /* hostname */
             $host  = $_SERVER['HTTP_HOST'];
-            /* base address without host and filename
-             * (the pattern removes the filename)*/
-            $folder = preg_replace('/\/[a-zA-Z_-]*$/', '',
-                    dirname($_SERVER['PHP_SELF']));
+
+            /* base address without host and filename */
+            $folder = rtrim(dirname($_SERVER['PHP_SELF']), "/");
             header("Location: $protocol://$host$folder/home");
         }
 
@@ -278,10 +277,9 @@ class FrontController {
             $protocol = "https";
         else
             $protocol = "http";
-        /* base address without host and filename
-         * (the pattern removes the filename) */
-        $folder = preg_replace('/\/[a-zA-Z_-]*$/', '',
-                dirname($_SERVER['PHP_SELF']));
+        /* base address without host and filename */
+        $folder = rtrim(dirname($_SERVER['PHP_SELF']), "/");
+
         header("refresh:5; url=$protocol://$host$folder/home");
     }
 
@@ -341,10 +339,9 @@ class FrontController {
                 $protocol = "http";
             /* hostname */
             $host  = $_SERVER['HTTP_HOST'];
-            /* base address without host and filename
-             * (the pattern removes the filename)*/
-            $folder = preg_replace('/\/[a-zA-Z_-]*$/', '',
-                    dirname($_SERVER['PHP_SELF']));
+            /* base address without host and filename */
+            $folder = rtrim(dirname($_SERVER['PHP_SELF']), "/");
+
             header("Location: $protocol://$host$folder/home");
         } else {
            $vd = new ViewDescriptor();
@@ -364,10 +361,8 @@ class FrontController {
            $protocol = "http";
        /* hostname */
        $host  = $_SERVER['HTTP_HOST'];
-       /* base address without host and filename
-        * (the pattern removes the filename) */
-       $folder = preg_replace('/\/[a-zA-Z_-]*$/', '',
-                dirname($_SERVER['PHP_SELF']));
+       /* base address without host and filename */
+       $folder = rtrim(dirname($_SERVER['PHP_SELF']), "/");
 
        /* reset from link with token */
        if (isset($req[self::CMD])) {
