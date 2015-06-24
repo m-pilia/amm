@@ -20,7 +20,7 @@ if (!isset($confirmationMessage))
 <form   name="settings-form"
         id="settings-form"
         class="input-form"
-        action="php/control/settingsChange.php"
+        action="settingsSubmit"
         method="POST"
         enctype="multipart/form-data">
     <div class="form-contour">

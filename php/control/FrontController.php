@@ -99,6 +99,14 @@ class FrontController {
                     self::settings();
                     break;
 
+                case "settingsSumbit":
+                    if (!isset($_SESSION[self::USER]))
+                        self::write403("settings");
+                    self::settings();
+                    break;
+                    require __DIR__ , "/settingsChange.php";
+                    break;
+
                 default: /* unrecognized page */
                     self::write404($req[self::PAGE]);
                     break;

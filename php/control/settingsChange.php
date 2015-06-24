@@ -39,7 +39,7 @@ if ($wrongPassword || $wrongRepeatedPassword) {
      * highlighted */
     $vd = new ViewDescriptor();
     $vd->setTitle("Settings");
-    $vd->setPage(ViewDescriptor::$settings);
+    $vd->setPage(ViewDescriptor::$settings, $_SESSION['user']->getRole());
     include_once __DIR__ . '/../view/master.php';
     exit();
 }
