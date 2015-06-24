@@ -99,7 +99,7 @@ class FrontController {
                     self::settings();
                     break;
 
-                case "settingsSumbit":
+                case "settingsSubmit":
                     if (!isset($_SESSION[self::USER]))
                         self::write403("settings");
                     self::settings();
