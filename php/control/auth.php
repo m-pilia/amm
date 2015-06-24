@@ -26,6 +26,8 @@
 
 /* http hostname */
 $host  = $_SERVER['HTTP_HOST'];
+/* base address without host and filename (the pattern removes the filename)*/
+$folder = preg_replace('/\/[a-zA-Z_-]*$/', '', dirname($_SERVER['PHP_SELF']));
 /* protocol */
 if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS']) == 'ON')
     $protocol = "https";
@@ -95,8 +97,8 @@ if (
     $result = 0; /* number of matching rows in the user table */
 
     $query = "SELECT Id, Password_hash FROM Users WHERE Username=?";
-    $stmt = $mysqli->stmt_init();
-    $stmt->prepare($query);
+    $stmt = $mysqli->prepare($query);
+    Database::checkStmt($stmt, $mysqli); /* error handler */
     $stmt->bind_param("s", $username);
     $stmt->execute();
     Database::checkStmt($stmt, $mysqli); /* error handler */
@@ -153,7 +155,7 @@ if (
         $_SESSION[FrontController::USER] = $user;
 
         /* redirect to homepage */
-        header("Location: $protocol://$host/home");
+        header("Location: $protocol://$host$folder/home");
         exit();
     }
 
@@ -215,7 +217,7 @@ else if (
     }
 
     /* redirect to reset page */
-    header("Location: $protocol://$host/reset?username=$username");
+    header("Location: $protocol://$host$folder/reset?username=$username");
 }
 
 /* invalid action */

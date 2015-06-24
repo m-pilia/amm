@@ -234,7 +234,11 @@ class FrontController {
                 $protocol = "http";
             /* hostname */
             $host  = $_SERVER['HTTP_HOST'];
-            header("Location: $protocol://$host/home");
+            /* base address without host and filename
+             * (the pattern removes the filename)*/
+            $folder = preg_replace('/\/[a-zA-Z_-]*$/', '',
+                    dirname($_SERVER['PHP_SELF']));
+            header("Location: $protocol://$host$folder/home");
         }
 
         $vd = new ViewDescriptor();
@@ -274,7 +278,11 @@ class FrontController {
             $protocol = "https";
         else
             $protocol = "http";
-        header("refresh:5; url=$protocol://$host/home");
+        /* base address without host and filename
+         * (the pattern removes the filename) */
+        $folder = preg_replace('/\/[a-zA-Z_-]*$/', '',
+                dirname($_SERVER['PHP_SELF']));
+        header("refresh:5; url=$protocol://$host$folder/home");
     }
 
     /* TODO */
@@ -333,7 +341,11 @@ class FrontController {
                 $protocol = "http";
             /* hostname */
             $host  = $_SERVER['HTTP_HOST'];
-            header("Location: $protocol://$host/home");
+            /* base address without host and filename
+             * (the pattern removes the filename)*/
+            $folder = preg_replace('/\/[a-zA-Z_-]*$/', '',
+                    dirname($_SERVER['PHP_SELF']));
+            header("Location: $protocol://$host$folder/home");
         } else {
            $vd = new ViewDescriptor();
            $vd->setTitle("Registration");
@@ -352,6 +364,10 @@ class FrontController {
            $protocol = "http";
        /* hostname */
        $host  = $_SERVER['HTTP_HOST'];
+       /* base address without host and filename
+        * (the pattern removes the filename) */
+       $folder = preg_replace('/\/[a-zA-Z_-]*$/', '',
+                dirname($_SERVER['PHP_SELF']));
 
        /* reset from link with token */
        if (isset($req[self::CMD])) {
@@ -450,7 +466,7 @@ class FrontController {
                include_once __DIR__ . '/../view/master.php';
 
                /* redirect to the login page */
-               header("refresh:5; url=$protocol://$host/login");
+               header("refresh:5; url=$protocol://$host$folder/login");
                exit();
            }
            else {
@@ -511,13 +527,6 @@ class FrontController {
                exit();
            }
 
-           $host  = $_SERVER['HTTP_HOST']; /* http hostname */
-           /* protocol */
-           if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS']) =='ON')
-               $protocol = "https";
-           else
-               $protocol = "http";
-
            $headers  = 'From: noreply@ammproject.com' . "\r\n";
            $headers .= 'MIME-Version: 1.0' . "\r\n";
            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -528,8 +537,8 @@ class FrontController {
                    "Open the following link to reset the password, or ignore " .
                    "this mail if you have not requested this.<br />" .
                    "Reset link:<br />" .
-                   "<a href=\"$protocol://$host/reset?cmd=reset&token=$token\">" .
-                   "   href=$protocol://$host/reset?cmd=reset&token=$token" .
+                   "<a href=\"$protocol://$host$folder/reset?cmd=reset&token=$token\">" .
+                   "   href=$protocol://$host$folder/reset?cmd=reset&token=$token" .
                    "</a>";
 
            /* send the email */
@@ -577,7 +586,7 @@ class FrontController {
            include_once __DIR__ . '/../view/master.php';
 
            /* redirect to homepage */
-           header("refresh:5; url=$protocol://$host/home");
+           header("refresh:5; url=$protocol://$host$folder/home");
            exit();
        }
    }

@@ -18,6 +18,8 @@ if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS']) == 'ON')
     $protocol = "https";
 else
     $protocol = "http";
+/* base address without host and filename (the pattern removes the filename)*/
+$folder = preg_replace('/\/[a-zA-Z_-]*$/', '', dirname($_SERVER['PHP_SELF']));
 
 require_once __DIR__ . "/../model/User.php";
 require_once __DIR__ . "/../view/ViewDescriptor.php";
@@ -128,7 +130,7 @@ $message = "Congratulations! You have completed the registration successfully, "
 include_once __DIR__ . '/../view/master.php';
 
 /* redirect to the homepage */
-header("refresh: 5; url=$protocol://$host/home");
+header("refresh: 5; url=$protocol://$host$folder/home");
 
 exit();
 ?>
