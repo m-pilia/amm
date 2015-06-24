@@ -120,10 +120,10 @@ $_SESSION['user'] =
 /* show registration confirmation page */
 $vd = new ViewDescriptor();
 $vd->setTitle("Registration success");
-$vd->setPage(Null, Null);
+$vd->setPage('generic_page', $_SESSION['user']->getRole());
 $title = "Registration success";
 $message = "Congratulations! You have completed the registration successfully, "
-        . "and you will be redirected to the <a href=\"/home\">homepage</a> "
+        . "and you will be redirected to the <a href=\"home\">homepage</a> "
         . "in seconds.";
 include_once __DIR__ . '/../view/master.php';
 

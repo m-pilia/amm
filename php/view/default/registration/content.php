@@ -35,7 +35,7 @@
 ?>
 
 <script language="javascript"
-    src="/js/registration_form_validation.js"
+    src="js/registration_form_validation.js"
     type="text/javascript">
 </script>
 
@@ -43,7 +43,7 @@
 <form   name="registration-form"
         id="registration-form"
         class="input-form"
-        action="/php/control/register.php"
+        action="register"
         onsubmit="return ajaxValidation()"
         method="POST"
         enctype="multipart/form-data">

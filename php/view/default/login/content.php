@@ -1,5 +1,5 @@
 <h2>Login</h2>
-<form class="input-form" action="/php/control/auth.php" method="post">
+<form class="input-form" action="auth" method="post">
     <div class="form-contour">
         <div id="login-mask">
             <input id="username-field" type="text" name="username"

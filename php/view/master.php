@@ -22,21 +22,20 @@ if (isset($_SESSION["user"]))
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
     <link rel="stylesheet"
-        href="/css/stylesheet.css"
+        href="css/stylesheet.css"
         type="text/css" media="all" />
     <link rel="stylesheet"
-        href="/css/table.css"
+        href="css/table.css"
         type="text/css" media="all" />
     <link rel="stylesheet"
         href='https://fonts.googleapis.com/css?family=Raleway'
         type='text/css' media="all" />
-<!--src="https://code.jquery.com/jquery-2.1.4.min.js" -->
     <script language="javascript"
-        src="/gitignores/jquery-2.1.4.min.js"
+        src="https://code.jquery.com/jquery-2.1.4.min.js"
         type="text/javascript">
     </script>
     <script language="javascript"
-        src="/js/dynamic_view_set.js"
+        src="js/dynamic_view_set.js"
         type="text/javascript">
     </script>
 
@@ -50,7 +49,7 @@ if (isset($_SESSION["user"]))
         <header id="header">
             <!-- logo image -->
             <div id="logo">
-                <a href="/home">
+                <a href="home">
                     <img src="<?= $vd->getLogoImage(); ?>" alt="Logo." />
                 </a>
             </div>

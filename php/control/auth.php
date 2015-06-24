@@ -181,7 +181,7 @@ else if (
     $vd->setTitle("Registration");
     $vd->setPage(ViewDescriptor::$registration, Null);
 
-    include_once '../view/master.php';
+    include_once __DIR__ . '/../view/master.php';
     exit();
 }
 

@@ -71,12 +71,22 @@ class FrontController {
                     self::login(Null, Null, Null);
                     break;
 
+                case "auth": /* login validation */
+                    require __DIR__ . "/auth.php";
+                    break;
+
                 case "logout": /* logout */
                     self::logout();
                     break;
 
                 case "registration": /* registration page */
                     self::registration($req);
+                    break;
+
+                case "register": /* registration validation */
+                    if (isset($_SESSION['user']))
+                        self::write400();
+                    require __DIR__ . "/register.php";
                     break;
 
                 case "reset": /* password reset */
@@ -100,17 +110,23 @@ class FrontController {
      * \brief Write a 400 error page.
      */
     public static function write400() {
+        if (!session_id())
+            session_start();
+        $role = Null;
+        if (isset($_SESSION['user']))
+            $role = $_SESSION['user']->getRole();
+
         header('HTTP/1.0 400 Bad Request'); /* error response */
         /* error page components */
         $vd = new ViewDescriptor();
         $vd->setTitle("Error");
-        $vd->setPage(ViewDescriptor::$error, Null);
+        $vd->setPage(ViewDescriptor::$error, $role);
         /* section title for error page */
         $title = "400 Bad Request.";
         /* error message */
         $message =  "The requested action seems invalid. Try returning to the "
                   . "<a href=\"javascript:history.back()\">previous page</a>.";
-        $errorImage = "/images/broken.svg";
+        $errorImage = "images/broken.svg";
 
         include_once __DIR__ . '/../view/master.php';
         exit();
@@ -120,11 +136,17 @@ class FrontController {
      * \brief Write a 403 error page.
      */
     public static function write403($pagename) {
+        if (!session_id())
+            session_start();
+        $role = Null;
+        if (isset($_SESSION['user']))
+            $role = $_SESSION['user']->getRole();
+
         header('HTTP/1.0 403 Forbidden'); /* error response */
         /* error page components */
         $vd = new ViewDescriptor();
         $vd->setTitle("Error");
-        $vd->setPage(ViewDescriptor::$error, Null);
+        $vd->setPage(ViewDescriptor::$error, $role);
         /* section title for error page */
         $title = "403 Forbidden.";
         /* error message */
@@ -134,8 +156,8 @@ class FrontController {
                   . (is_null($pagename) ? "" : "\" ")  /* close quotes, space */
                   . ". Try "
                   . "<a href=\"javascript:history.back()\">going back</a> "
-                  . "or return to the <a href=\"/home\">homepage</a>.";
-        $errorImage = "/images/forbidden.svg";
+                  . "or return to the <a href=\"home\">homepage</a>.";
+        $errorImage = "images/forbidden.svg";
 
         include_once __DIR__ . '/../view/master.php';
         exit();
@@ -145,11 +167,17 @@ class FrontController {
      * \brief Write a 404 error page.
      */
     public static function write404($pagename) {
+        if (!session_id())
+            session_start();
+        $role = Null;
+        if (isset($_SESSION['user']))
+            $role = $_SESSION['user']->getRole();
+
         header('HTTP/1.0 404 Not Found'); /* error response */
         /* error page components */
         $vd = new ViewDescriptor();
         $vd->setTitle("Error");
-        $vd->setPage(ViewDescriptor::$error, Null);
+        $vd->setPage(ViewDescriptor::$error, $role);
         /* section title for error page */
         $title = "404 Resource Not Found.";
         /* error message */
@@ -158,7 +186,7 @@ class FrontController {
                   . $pagename
                   . (is_null($pagename) ? "" : "\" ")  /* close quotes, space */
                   . "is currently unavailable. Check the URL.";
-        $errorImage = "/images/broken.svg";
+        $errorImage = "images/broken.svg";
 
         include_once __DIR__ . '/../view/master.php';
         exit();
@@ -169,11 +197,17 @@ class FrontController {
      * @param errorMessage Message as content of the page.
      */
     public static function write500($errorMessage, $errorImage) {
+        if (!session_id())
+            session_start();
+        $role = Null;
+        if (isset($_SESSION['user']))
+            $role = $_SESSION['user']->getRole();
+
         header('HTTP/1.0 500 Internal Server Error'); /* error response */
         /* error page components */
         $vd = new ViewDescriptor();
         $vd->setTitle("Error");
-        $vd->setPage(ViewDescriptor::$error, Null);
+        $vd->setPage(ViewDescriptor::$error, $role);
         /* section title for error page */
         $title = "500 Internal Server Error.";
         /* error message */
@@ -379,13 +413,13 @@ class FrontController {
                    /* section title for error page */
                    $vd->setTitle("Password Reset");
 
-                   $errorImage = "/images/mail_error.svg";
-                   $title = "Mail server unavaible";
+                   $errorImage = "images/mail_error.svg";
+                   $title = "Mail server unavailable";
                    $message = "The local mail server is unavailable, so " .
                               "the password cannot be reset via e-mail. " .
                               "Try returning to the " .
-                              "<a href=\"/home\">homepage</a> or to the " .
-                              "<a href=\"/login\">login page</a>.";
+                              "<a href=\"home\">homepage</a> or to the " .
+                              "<a href=\"login\">login page</a>.";
 
                    include_once __DIR__ . '/../view/master.php';
                    exit();
@@ -408,10 +442,10 @@ class FrontController {
                $vd->setPage(Null, Null);
                $vd->setTitle("Password Reset Complete");
 
-               $image = "/images/mail.svg";
+               $image = "images/mail.svg";
                $message = "A new temporary password has been sent to your " .
                           "e-mail address. You will be redirected to the " .
-                          "<a href=\"/login\">login page</a> in seconds.";
+                          "<a href=\"login\">login page</a> in seconds.";
 
                include_once __DIR__ . '/../view/master.php';
 
@@ -508,11 +542,11 @@ class FrontController {
                $vd->setTitle("Password Reset");
 
                $errorImage = "/images/mail_error.svg";
-               $title = "Mail server unavaible";
+               $title = "Mail server unavailable";
                $message = "The local mail server is unavailable, so the password " .
                           "cannot be reset via e-mail. Try return to the " .
-                          "<a href=\"/home\">homepage</a> or to the " .
-                          "<a href=\"/login\">login page</a>.";
+                          "<a href=\"home\">homepage</a> or to the " .
+                          "<a href=\"login\">login page</a>.";
 
                include_once __DIR__ . '/../view/master.php';
                exit();
@@ -536,7 +570,7 @@ class FrontController {
            $vd->setPage(Null, Null);
            $vd->setTitle("Password Reset");
 
-           $image = "/images/mail.svg";
+           $image = "images/mail.svg";
            $message = "A reset e-mail has been sent to the user address. " .
                       "You will be redirected to the homepage in seconds.";
 

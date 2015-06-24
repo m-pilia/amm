@@ -11,7 +11,7 @@ if (!isset($confirmationMessage))
 ?>
 
 <script language="javascript"
-    src="/js/registration_form_validation.js"
+    src="js/registration_form_validation.js"
     type="text/javascript">
 </script>
 
@@ -20,7 +20,7 @@ if (!isset($confirmationMessage))
 <form   name="settings-form"
         id="settings-form"
         class="input-form"
-        action="/php/control/settingsChange.php"
+        action="php/control/settingsChange.php"
         method="POST"
         enctype="multipart/form-data">
     <div class="form-contour">

@@ -74,7 +74,7 @@ class ViewDescriptor {
         $this->page = "/generic_page";
         $this->defaultRole = "/default";
 
-        $this->logoImage = '/images/logo.svg';
+        $this->logoImage = 'images/logo.svg';
         $this->contentFile = $this->setComponent('/content.php', '/default');
         $this->head = $this->setComponent('/head.php', '/default');
         $this->leftBarFile = $this->setComponent('/leftBar.php', '/default');
