@@ -1,0 +1,19 @@
+RewriteEngine on
+
+# /page/subpage
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?page=$1 [QSA]
+
+# redirect / to home
+RewriteRule ^$ index.php?page=home [QSA]
+
+# Ensure the protocol is not HTTPS already
+#RewriteCond %{HTTPS} !=on
+
+# Redirect http into https for all pages
+#RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+
+# Redirect errors to error pages
+ErrorDocument 400 /index.php?page=400
+ErrorDocument 403 /index.php?page=403
+ErrorDocument 404 /index.php?page=404
+ErrorDocument 500 /index.php?page=500
