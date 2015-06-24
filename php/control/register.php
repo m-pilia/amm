@@ -11,11 +11,6 @@
  * redirecting to the home page).
  */
 
-/* document root */
-$root = $_SERVER['DOCUMENT_ROOT'];
-/* ensure there is the final slash */
-if (substr($root, -1) != "/")
-    $root .= "/";
 /* http hostname */
 $host  = $_SERVER['HTTP_HOST'];
 /* protocol */
@@ -24,11 +19,11 @@ if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS']) == 'ON')
 else
     $protocol = "http";
 
-require_once $root . "/php/model/User.php";
-require_once $root . "/php/view/ViewDescriptor.php";
-require_once $root . "/php/Database.php";
+require_once __DIR__ . "/../model/User.php";
+require_once __DIR__ . "/../view/ViewDescriptor.php";
+require_once __DIR__ . "/../Database.php";
 require_once __DIR__ . "/dataValidator.php";
-require $root . "/php/settings.php";
+require __DIR__ . "/../settings.php";
 
 if (!isset($ajaxAnswer))
     $ajaxAnswer = Null;
@@ -41,7 +36,7 @@ extract($result);
 
 /* response to an AJAX request for client side validation */
 if ($ajaxAnswer) {
-    include $root . '/php/view/default/registration/ajax.php';
+    include __DIR__ . '/../view/default/registration/ajax.php';
     exit();
 }
 
@@ -51,7 +46,7 @@ if (!$allValid) {
     $vd = new ViewDescriptor();
     $vd->setTitle("Registration");
     $vd->setPage(ViewDescriptor::$registration, Null);
-    include_once $vd->getRoot() . '/php/view/master.php';
+    include_once __DIR__ . '/../view/master.php';
     exit();
 }
 
@@ -65,8 +60,8 @@ if ($avatar != $defaultAvatar) { /* if the user has uploaded an avatar image */
             . mt_rand(10000000, 99999999);
     } while (file_exists($avatar)); /* check if file already exists */
 
-    /* move */
-    $dest = $root . $avatar;
+    /* move the uploaded file to its destination */
+    $dest = __DIR__ . "/../../" . $avatar;
     if (move_uploaded_file($_FILES['avatar']['tmp_name'], $dest) === FALSE) {
         /* error moving the file: log the error and use default avatar
          * as fallback */
@@ -130,7 +125,7 @@ $title = "Registration success";
 $message = "Congratulations! You have completed the registration successfully, "
         . "and you will be redirected to the <a href=\"/home\">homepage</a> "
         . "in seconds.";
-include_once $vd->getRoot() . '/php/view/master.php';
+include_once __DIR__ . '/../view/master.php';
 
 /* redirect to the homepage */
 header("refresh: 5; url=$protocol://$host/home");

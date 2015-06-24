@@ -19,18 +19,6 @@ class ViewDescriptor {
     public static $appName = "RBA";
 
     /**
-     * Document root
-     * @var string
-     */
-    private $root;
-
-    /**
-     * View root in the MVC
-     * @var string
-     */
-    private $viewRoot;
-
-    /**
      * Default role components folder
      * @var string
      */
@@ -83,10 +71,6 @@ class ViewDescriptor {
      * for a visitor.
      */
     public function __construct() {
-        $this->root = $_SERVER['DOCUMENT_ROOT'];
-        if (substr($this->root, -1) != "/")
-            $this->root .= "/";
-        $this->viewRoot = $this->root . "php/view";
         $this->page = "/generic_page";
         $this->defaultRole = "/default";
 
@@ -159,40 +143,33 @@ class ViewDescriptor {
      */
     private function setComponent($cmp, $role) {
         /* search in /role/page */
-        $file = $this->viewRoot . $role . $this->page . $cmp;
+        $file = __DIR__ . $role . $this->page . $cmp;
         if (file_exists($file))
             return $file;
 
         /* if fails, search in /User/page */
-        $file = $this->viewRoot . "/User" . $this->page . $cmp;
+        $file = __DIR__ . "/User" . $this->page . $cmp;
         if (file_exists($file))
             return $file;
 
         /* if fails, search in /role/generic_page */
-        $file = $this->viewRoot . $role . "/generic_page" . $cmp;
+        $file = __DIR__ . $role . "/generic_page" . $cmp;
         if (file_exists($file))
             return $file;
 
         /* if fails, search in /User/generic_page */
-        $file = $this->viewRoot . "/User" . "/generic_page" . $cmp;
+        $file = __DIR__ . "/User" . "/generic_page" . $cmp;
         if (file_exists($file))
             return $file;
 
         /* if fails, search in /default/page */
-        $file = $this->viewRoot . $this->defaultRole . $this->page . $cmp;
+        $file = __DIR__ . $this->defaultRole . $this->page . $cmp;
         if (file_exists($file))
             return $file;
 
         /* if fails, use /default/generic_page */
-        $file = $this->viewRoot . $this->defaultRole . "/generic_page" . $cmp;
+        $file = __DIR__ . $this->defaultRole . "/generic_page" . $cmp;
         return $file;
-    }
-
-    /*
-     * Getter for root
-     */
-    public function getRoot() {
-        return $this->root;
     }
 
     /*
@@ -250,7 +227,7 @@ class ViewDescriptor {
      * Setter for head
      */
     public function setHead($head) {
-        $this->head = $this->root . $head;
+        $this->head = __DIR__ . $head;
         return $this;
     }
 
@@ -265,7 +242,7 @@ class ViewDescriptor {
      * Setter for logoImage
      */
     public function setLogoImage($logoImage) {
-        $this->logoImage = $this->root . $logoImage;
+        $this->logoImage = __DIR__ . $logoImage;
         return $this;
     }
 
@@ -280,7 +257,7 @@ class ViewDescriptor {
      * Setter for leftBarFile
      */
     public function setLeftBarFile($leftBarFile) {
-        $this->leftBarFile = $this->root . $leftBarFile;
+        $this->leftBarFile = __DIR__ . $leftBarFile;
         return $this;
     }
 
@@ -295,7 +272,7 @@ class ViewDescriptor {
      * Setter for rightBarFile
      */
     public function setRightBarFile($rightBarFile) {
-        $this->rightBarFile = $this->root . $rightBarFile;
+        $this->rightBarFile = __DIR__ . $rightBarFile;
         return $this;
     }
 
@@ -310,7 +287,7 @@ class ViewDescriptor {
      * Setter for contentFile
      */
     public function setContentFile($contentFile) {
-        $this->contentFile = $this->root . $contentFile;
+        $this->contentFile = __DIR__ . $contentFile;
         return $this;
     }
 
@@ -325,7 +302,7 @@ class ViewDescriptor {
      * Setter for footerFile
      */
     public function setFooterFile($footerFile) {
-        $this->footerFile = $this->root . $footerFile;
+        $this->footerFile = __DIR__ . $footerFile;
         return $this;
     }
 

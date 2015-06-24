@@ -24,11 +24,6 @@
  * 		external PHP library to use a third party mail server.
  */
 
-/* document root */
-$root = $_SERVER['DOCUMENT_ROOT'];
-/* ensure there is the final slash */
-if (substr($root, -1) != "/")
-    $root .= "/";
 /* http hostname */
 $host  = $_SERVER['HTTP_HOST'];
 /* protocol */
@@ -37,11 +32,11 @@ if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS']) == 'ON')
 else
     $protocol = "http";
 
-require_once $root . "/php/model/User.php";
-require_once $root . "/php/Database.php";
-require_once $root . "/php/control/FrontController.php";
-require_once $root . "/php/view/ViewDescriptor.php";
-require_once $root . "/php/settings.php";
+require_once __DIR__ . "/../model/User.php";
+require_once __DIR__ . "/../Database.php";
+require_once __DIR__ . "/FrontController.php";
+require_once __DIR__ . "/../view/ViewDescriptor.php";
+require_once __DIR__ . "/../settings.php";
 
 if (!session_id())
     session_start();
@@ -186,7 +181,7 @@ else if (
     $vd->setTitle("Registration");
     $vd->setPage(ViewDescriptor::$registration, Null);
 
-    include_once $vd->getRoot() . '/php/view/master.php';
+    include_once '../view/master.php';
     exit();
 }
 

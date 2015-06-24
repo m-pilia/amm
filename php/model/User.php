@@ -1,10 +1,6 @@
 <?php
 
-$root = $_SERVER['DOCUMENT_ROOT'];
-/* ensure there is the final slash */
-if (substr($root, -1) != "/")
-    $root .= "/";
-include $root . "php/Database.php";
+include __DIR__ . "/../Database.php";
 include __DIR__ . "/Admin.php";
 
 /**

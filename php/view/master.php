@@ -4,9 +4,8 @@
  *  ...
  */
 
-$root = $_SERVER['DOCUMENT_ROOT'];
-include_once $root . "/php/view/ViewDescriptor.php";
-include_once $root . "/php/model/User.php";
+include_once __DIR__ . "/ViewDescriptor.php";
+include_once __DIR__ . "/../model/User.php";
 
 if (!session_id())
     session_start();

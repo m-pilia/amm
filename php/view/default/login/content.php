@@ -1,8 +1,3 @@
-<?php
-
-$root = $_SERVER['DOCUMENT_ROOT'];
-?>
-
 <h2>Login</h2>
 <form class="input-form" action="/php/control/auth.php" method="post">
     <div class="form-contour">
@@ -13,14 +8,14 @@ $root = $_SERVER['DOCUMENT_ROOT'];
                  class="<?php if ($wrongUsername) echo "input-error"; ?>"/>
             <?php
                 $errorMessage = $wrongUsername;
-                include $root . "/php/view/default/registration/error.php";
+                include __DIR__ . "/../registration/error.php";
             ?>
             <input id="password-field" type="password" name="password"
                 placeholder="Password"
                 class="<?php if ($wrongPassword) echo "input-error"; ?>"/>
             <?php
                 $errorMessage = $wrongPassword;
-                include $root . "/php/view/default/registration/error.php";
+                include __DIR__ . "/../registration/error.php";
             ?>
             <input class="rc-button" id="login-button"
                 type="submit" name="login_button"

@@ -7,11 +7,6 @@
  * This script validates data from a registration form.
  */
 
-/* document root */
-$root = $_SERVER['DOCUMENT_ROOT'];
-/* ensure there is the final slash */
-if (substr($root, -1) != "/")
-    $root .= "/";
 /* http hostname */
 $host  = $_SERVER['HTTP_HOST'];
 /* protocol */
@@ -20,9 +15,9 @@ if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS']) == 'ON')
 else
     $protocol = "http";
 
-require_once $root . "/php/model/User.php";
-require_once $root . "/php/Database.php";
-require $root . "/php/settings.php";
+require_once __DIR__ . "/../model/User.php";
+require_once __DIR__ . "/../Database.php";
+require __DIR__ . "/../settings.php";
 
 /**
  * \brief Validate user data.
@@ -31,8 +26,7 @@ require $root . "/php/settings.php";
  * messages related to invalid values.
  */
 function validate(&$req) {
-    $root = $_SERVER['DOCUMENT_ROOT']; /* document root */
-    require $root . "/php/settings.php";
+    require __DIR__ . "/../settings.php";
 
     /* a valid name must be composed by words starting with an uppercase
      * and lowercase for the rest. There must be at least one word, other

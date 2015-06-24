@@ -1,11 +1,8 @@
 <?php
 
-$root = $_SERVER['DOCUMENT_ROOT'];
-$host  = $_SERVER['HTTP_HOST'];
-require_once $root . "/php/model/User.php";
-include_once $root . '/php/view/ViewDescriptor.php';
-include_once $root . '/php/control/BaseController.php';
-require_once $root . "/php/settings.php";
+require_once __DIR__ . "/../model/User.php";
+include_once __DIR__ . "/../view/ViewDescriptor.php";
+require_once __DIR__ . "/../settings.php";
 
 /**
  * \brief The application entry point, which sorts page requests.
@@ -115,7 +112,7 @@ class FrontController {
                   . "<a href=\"javascript:history.back()\">previous page</a>.";
         $errorImage = "/images/broken.svg";
 
-        include_once $vd->getRoot() . '/php/view/master.php';
+        include_once __DIR__ . '/../view/master.php';
         exit();
     }
 
@@ -140,7 +137,7 @@ class FrontController {
                   . "or return to the <a href=\"/home\">homepage</a>.";
         $errorImage = "/images/forbidden.svg";
 
-        include_once $vd->getRoot() . '/php/view/master.php';
+        include_once __DIR__ . '/../view/master.php';
         exit();
     }
 
@@ -163,7 +160,7 @@ class FrontController {
                   . "is currently unavailable. Check the URL.";
         $errorImage = "/images/broken.svg";
 
-        include_once $vd->getRoot() . '/php/view/master.php';
+        include_once __DIR__ . '/../view/master.php';
         exit();
     }
 
@@ -184,7 +181,7 @@ class FrontController {
         if (!isset($errorImage))
             $errorImage = "/images/broken.svg";
 
-        include_once $vd->getRoot() . '/php/view/master.php';
+        include_once __DIR__ . '/../view/master.php';
         exit();
     }
 
@@ -210,7 +207,7 @@ class FrontController {
         $vd->setTitle("Login");
         $vd->setPage(ViewDescriptor::$login, Null);
 
-        include_once $vd->getRoot() . '/php/view/master.php';
+        include_once __DIR__ . '/../view/master.php';
         exit();
     }
 
@@ -233,7 +230,7 @@ class FrontController {
         $vd->setTitle("Logout");
         $vd->setPage(ViewDescriptor::$logout, Null);
 
-        include_once $vd->getRoot() . '/php/view/master.php';
+        include_once __DIR__ . '/../view/master.php';
 
         /* redirect to home after 5 seconds */
         /* hostname */
@@ -258,7 +255,7 @@ class FrontController {
 
         $vd->setPage(ViewDescriptor::$home, $role);
 
-        include_once $vd->getRoot() . '/php/view/master.php';
+        include_once __DIR__ . '/../view/master.php';
         exit();
     }
 
@@ -273,7 +270,7 @@ class FrontController {
 
         $vd->setPage(ViewDescriptor::$about, $role);
 
-        include_once $vd->getRoot() . '/php/view/master.php';
+        include_once __DIR__ . '/../view/master.php';
         exit();
     }
 
@@ -285,8 +282,7 @@ class FrontController {
             switch ($req[self::CMD]) {
                 case "regValidation":
                     $ajaxAnswer = True;
-                    include $_SERVER['DOCUMENT_ROOT']
-                             . '/php/control/register.php';
+                    include __DIR__ . '/register.php';
                     break;
 
                 default: /* unrecognized command */
@@ -309,7 +305,7 @@ class FrontController {
            $vd->setTitle("Registration");
            $vd->setPage(ViewDescriptor::$registration, Null);
 
-           include_once $vd->getRoot() . '/php/view/master.php';
+           include_once __DIR__ . '/../view/master.php';
            exit();
        }
    }
@@ -391,7 +387,7 @@ class FrontController {
                               "<a href=\"/home\">homepage</a> or to the " .
                               "<a href=\"/login\">login page</a>.";
 
-                   include_once $vd->getRoot() . '/php/view/master.php';
+                   include_once __DIR__ . '/../view/master.php';
                    exit();
                }
 
@@ -417,7 +413,7 @@ class FrontController {
                           "e-mail address. You will be redirected to the " .
                           "<a href=\"/login\">login page</a> in seconds.";
 
-               include_once $vd->getRoot() . '/php/view/master.php';
+               include_once __DIR__ . '/../view/master.php';
 
                /* redirect to the login page */
                header("refresh:5; url=$protocol://$host/login");
@@ -518,7 +514,7 @@ class FrontController {
                           "<a href=\"/home\">homepage</a> or to the " .
                           "<a href=\"/login\">login page</a>.";
 
-               include_once $vd->getRoot() . '/php/view/master.php';
+               include_once __DIR__ . '/../view/master.php';
                exit();
            }
 
@@ -544,7 +540,7 @@ class FrontController {
            $message = "A reset e-mail has been sent to the user address. " .
                       "You will be redirected to the homepage in seconds.";
 
-           include_once $vd->getRoot() . '/php/view/master.php';
+           include_once __DIR__ . '/../view/master.php';
 
            /* redirect to homepage */
            header("refresh:5; url=$protocol://$host/home");
@@ -560,8 +556,7 @@ class FrontController {
            switch ($req[self::CMD]) {
                case "regValidation":
                    $ajaxAnswer = True;
-                   include $_SERVER['DOCUMENT_ROOT']
-                            . '/php/control/settingsChange.php';
+                   include __DIR__ . '/settingsChange.php';
                    break;
 
                default: /* unrecognized command */
@@ -574,7 +569,7 @@ class FrontController {
       $vd->setPage('settings', $_SESSION[self::USER]->getRole());
       $vd->setTitle("Settings");
 
-      include_once $vd->getRoot() . '/php/view/master.php';
+      include_once __DIR__ . '/../view/master.php';
    }
 }
 
