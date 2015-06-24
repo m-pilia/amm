@@ -102,8 +102,6 @@ class FrontController {
                 case "settingsSubmit":
                     if (!isset($_SESSION[self::USER]))
                         self::write403("settings");
-                    self::settings();
-                    break;
                     require __DIR__ . "/settingsChange.php";
                     break;
 
