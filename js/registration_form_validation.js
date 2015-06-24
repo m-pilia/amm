@@ -9,7 +9,7 @@
  */
 function ajaxValidation(element) {
     $.ajax({
-        url: '/registration',
+        url: 'registration',
         type: 'POST',
         data: {
             'cmd': 'regValidation',
