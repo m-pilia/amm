@@ -41,7 +41,7 @@ class Database {
      * @return Never: this function terminates the execution.
      */
     public static function dbError($mysqli) {
-        if (is_a($mysqli, 'mysqli')) {
+        if (isset($mysqli) && is_a($mysqli, 'mysqli')) {
             $errorId = $mysqli->connect_errno;
             $errorMsg = $mysqli->connect_error;
             error_log("Database connection error " .
@@ -51,7 +51,7 @@ class Database {
         $errorMessage = "There was a problem in the connection with the "
             . "database. Try to return to the "
             . "<a href=\"javascript:history.back()\">previous page</a>.";
-        $errorImage = "/images/database_error.svg";
+        $errorImage = "images/database_error.svg";
 
         FrontController::write500($errorMessage, $errorImage);
         exit();
@@ -66,7 +66,7 @@ class Database {
         $errorMessage = "There is something incoherent in the database "
             . "content. Try to return to the "
             . "<a href=\"javascript:history.back()\">previous page</a>.";
-        $errorImage = "/images/database_corruption.svg";
+        $errorImage = "images/database_corruption.svg";
 
         FrontController::write500($errorMessage, $errorImage);
         exit();
@@ -97,7 +97,7 @@ class Database {
                 "(errno: $errorId)", 0);
             $stmt->close();
             $mysqli->close();
-            Database::dbError();
+            Database::dbError(Null);
             exit();
         }
     }

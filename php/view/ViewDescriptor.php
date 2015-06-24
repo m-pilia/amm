@@ -198,8 +198,6 @@ class ViewDescriptor {
         else
             $role = $this->defaultRole;
 
-        $this->logoImage = '/images/logo.svg';
-
         $this->contentFile = $this->setComponent('/content.php', $role);
         $this->head = $this->setComponent('/head.php', $role);
         $this->leftBarFile = $this->setComponent('/leftBar.php', $role);
