@@ -91,11 +91,10 @@ class Database {
      * @return Nothing.
      */
     public static function checkStmt($stmt, $mysqli) {
-        if ($stmt->errno) {
+        if (isset($stmt) && is_a($stmt, 'mysqli_stmt') && $stmt->errno) {
             $errorId = $stmt->errno;
             error_log("Prepared statement execution error " .
                 "(errno: $errorId)", 0);
-            $stmt->close();
             $mysqli->close();
             Database::dbError(Null);
             exit();
