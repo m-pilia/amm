@@ -104,7 +104,7 @@ class FrontController {
                         self::write403("settings");
                     self::settings();
                     break;
-                    require __DIR__ , "/settingsChange.php";
+                    require __DIR__ . "/settingsChange.php";
                     break;
 
                 default: /* unrecognized page */
