@@ -2,40 +2,39 @@
 /* Registration form
  */
 
- if (!isset($confirmationMessage))
+if (!isset($confirmationMessage))
     $confirmationMessage = Null;
- if (!isset($username))
+if (!isset($username))
     $username = Null;
- if (!isset($password))
+if (!isset($password))
     $password = Null;
- if (!isset($repeatedPassword))
+if (!isset($repeatedPassword))
     $repeatedPassword = Null;
- if (!isset($email))
+if (!isset($email))
     $email = Null;
- if (!isset($first))
+if (!isset($first))
     $first = Null;
- if (!isset($last))
+if (!isset($last))
     $last = Null;
- if (!isset($wrongUsername))
+if (!isset($wrongUsername))
     $wrongUsername = Null;
- if (!isset($wrongPassword))
+if (!isset($wrongPassword))
     $wrongPassword = Null;
- if (!isset($wrongRepeatedPassword))
+if (!isset($wrongRepeatedPassword))
     $wrongRepeatedPassword = Null;
- if (!isset($wrongEmail))
+if (!isset($wrongEmail))
     $wrongEmail = Null;
- if (!isset($wrongFirst))
+if (!isset($wrongFirst))
     $wrongFirst = Null;
- if (!isset($wrongLast))
+if (!isset($wrongLast))
     $wrongLast = Null;
- if (!isset($wrongImage))
+if (!isset($wrongImage))
     $wrongImage = Null;
- if (!isset($prevUsername))
+if (!isset($prevUsername))
     $prevUsername = Null;
 ?>
 
-<script language="javascript"
-    src="js/registration_form_validation.js"
+<script src="js/registration_form_validation.js"
     type="text/javascript">
 </script>
 
@@ -43,7 +42,7 @@
 <form   name="registration-form"
         id="registration-form"
         class="input-form"
-        action="register"
+        action="registration?cmd=submit"
         onsubmit="return ajaxValidation()"
         method="POST"
         enctype="multipart/form-data">
@@ -68,9 +67,13 @@
                 name="password"
                 placeholder="Password"
                 oninput="ajaxValidation('password')"
+                onkeypress="return capsLockAlert(event);"
                 autocomplete="off"
                 class="<?php if ($wrongPassword) echo "input-error"; ?>"/>
             <br />
+            <div id="caps-warning" class="error-hidden">
+                The CapsLock key seems to be active
+            </div>
             <?php
                 $errorId = "password-error";
                 $errorMessage = $wrongPassword;
@@ -81,6 +84,7 @@
                 name="password-rep"
                 placeholder="Repeat password"
                 oninput="ajaxValidation('password-rep')"
+                onkeypress="return capsLockAlert(event);"
                 autocomplete="off"
                 class="<?php if ($wrongRepeatedPassword) echo"input-error";?>"/>
             <br />
@@ -135,7 +139,7 @@
         <!-- right column of the form -->
         <div class="form-right">
             <label for="reg-avatar">
-                <?php echo "Profile image"; ?>
+                Profile image
             </label>
             <br />
             <div class="form-contour">
@@ -156,6 +160,6 @@
 
         <input class="rc-button" id="register-button"
             type="submit" name="register_button"
-            value="<?php echo "Register"; ?>" />
+            value="Register" />
     </div>
 </form>

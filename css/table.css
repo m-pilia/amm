@@ -1,6 +1,7 @@
 /* for a container with table-like behaviour */
 .view-table {
     display: table;
+    border-spacing: 0px 5px;
 }
 
 /* row in a view-table container */
@@ -11,6 +12,18 @@
 /* for elements in a view-row, to behave like table cells */
 .view-row > * {
     display: table-cell;
+    vertical-align: inherit;
     padding-left: 5px;
     padding-right: 5px;
+}
+
+/* for top captions */
+.view-caption-top {
+    display: table-caption;
+}
+
+/* for bottom captions */
+.view-caption-bottom {
+    display: table-caption;
+    caption-side: bottom;
 }

@@ -1,2 +1,6 @@
 <h1><?= $vd->getTitle() ?></h1>
-<a id="login-button" href="login"><button class="rc-button">Sign in</button></a>
+<button id="login-button"
+        class="rc-button"
+        onclick="window.open('login', '_self')">
+    Sign in
+</button>

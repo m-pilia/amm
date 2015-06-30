@@ -9,10 +9,10 @@
  */
 function ajaxValidation(element) {
     $.ajax({
-        url: 'registration',
+        url:  'registration',
         type: 'POST',
         data: {
-            'cmd': 'regValidation',
+            'cmd': 'validation',
             'username': $("#reg-username-field").val().trim(),
             'password': $("#reg-password-field").val(),
             'password-rep': $("#reg-password-rep-field").val(),

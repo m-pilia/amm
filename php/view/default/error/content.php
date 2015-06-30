@@ -1,6 +1,8 @@
 <?php
 if (!isset($errorImage))
     $errorImage = Null;
+if (!isset($title))
+    $title = Null;
 if (!isset($message))
     $message = Null;
 ?>

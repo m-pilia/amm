@@ -20,7 +20,7 @@ if (!isset($confirmationMessage))
 <form   name="settings-form"
         id="settings-form"
         class="input-form"
-        action="settingsSubmit"
+        action="settings?cmd=submit"
         method="POST"
         enctype="multipart/form-data">
     <div class="form-contour">
@@ -36,9 +36,14 @@ if (!isset($confirmationMessage))
                 name="password"
                 placeholder="New password"
                 oninput="ajaxValidation('password')"
+                onkeypress="return capsLockAlert(event);"
                 autocomplete="off"
-                class="<?php if ($wrongPassword) echo "input-error"; ?>"/>
+                class="<?php if ($wrongPassword) echo "input-error"; ?>"
+                autofocus/>
             <br />
+            <div id="caps-warning" class="error-hidden">
+                The CapsLock key seems to be active
+            </div>
             <?php
                 $errorId = "password-error";
                 $errorMessage = $wrongPassword;
@@ -49,6 +54,7 @@ if (!isset($confirmationMessage))
                 name="password-rep"
                 placeholder="Repeat new password"
                 oninput="ajaxValidation('password-rep')"
+                onkeypress="return capsLockAlert(event);"
                 autocomplete="off"
                 class="<?php if ($wrongRepeatedPassword) echo"input-error";?>"/>
             <br />

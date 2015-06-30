@@ -11,7 +11,6 @@ if (!session_id())
     session_start();
 if (isset($_SESSION["user"]))
     $user = $_SESSION["user"];
-
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +29,18 @@ if (isset($_SESSION["user"]))
     <link rel="stylesheet"
         href='https://fonts.googleapis.com/css?family=Raleway'
         type='text/css' media="all" />
-    <script language="javascript"
-        src="https://code.jquery.com/jquery-2.1.4.min.js"
-        type="text/javascript">
+    <link rel="stylesheet"
+        href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"
+        type='text/css' media="all" />
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"
+            type="text/javascript">
     </script>
-    <script language="javascript"
-        src="js/dynamic_view_set.js"
-        type="text/javascript">
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"
+            type="text/javascript">
+    </script>
+    <script src="js/dynamic_view_set.js"
+            type="text/javascript">
     </script>
 
     <title><?= ViewDescriptor::$appName . " - " . $vd->getTitle() ?></title>
@@ -48,19 +52,17 @@ if (isset($_SESSION["user"]))
         <!-- header -->
         <header id="header">
             <!-- logo image -->
-            <div id="logo">
-                <a href="home">
-                    <img src="<?= $vd->getLogoImage(); ?>" alt="Logo." />
-                </a>
-            </div>
+            <a href="home">
+                <img id="logo-image" src="<?= $vd->getLogoImage(); ?>"
+                     title="Homepage"
+                     alt="Logo." />
+            </a>
 
             <!-- head title -->
-            <div id="head">
-                <?php
-                    $head = $vd->getHead();
-                    require "$head";
-                ?>
-            </div>
+            <?php
+                $head = $vd->getHead();
+                require "$head";
+            ?>
         </header>
 
         <!-- left bar -->
@@ -71,26 +73,44 @@ if (isset($_SESSION["user"]))
             ?>
         </div>
 
-        <!-- main content -->
-        <div id="content">
-            <?php
-                $content = $vd->getContentFile();
-                require "$content";
-            ?>
-        </div>
+        <!-- sliding section (to show the sidebar menu) -->
+        <div id="sliding">
+            <!-- trigger to show/hide the sidebar -->
+            <img id="trigger"
+                 src="images/trigger.svg"
+                 alt="trigger"
+                 title="Show the sidebar"
+                 onclick="sidebarTrigger(event)"/>
 
-        <div style="clear: both; width: 0px; height: 0px;"></div>
-
-        <!-- provides background color to the footer external margin -->
-        <div id="footer-wrapper">
-            <!-- actual footer -->
-            <div id="footer-bar">
+            <!-- main content -->
+            <div id="content"
+                 onclick="closeSidebar()"
+                 onmouseleave="closeSidebarAfterTimeCancel()">
                 <?php
-                    $footer = $vd->getFooterFile();
-                    require "$footer";
+                    $content = $vd->getContentFile();
+                    require "$content";
                 ?>
+            </div>
+
+            <div style="clear: both; width: 0px; height: 0px;"></div>
+
+            <!-- provides background color to the footer external margin -->
+            <div id="footer-wrapper">
+                <!-- actual footer -->
+                <div id="footer-bar">
+                    <?php
+                        $footer = $vd->getFooterFile();
+                        require "$footer";
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
+<?php
+/* mantain the sidebar open if requested */
+if (isset($_REQUEST["sidebar"]) && $_REQUEST["sidebar"] == "open")
+    echo "<script type=\"text/javascript\">openSidebar();</script>";
+?>
 </html>

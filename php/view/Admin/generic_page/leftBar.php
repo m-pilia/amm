@@ -10,6 +10,8 @@ $name = $user->getFirst() . " " . $user->getLast();
     <li class="sidebar-item"><a href="home?sidebar=open">Home</a></li>
     <li class="sidebar-item"><a href="calendar?sidebar=open">Calendar</a></li>
     <li class="sidebar-item"><a href="createEvent?sidebar=open">Create event</a></li>
+    <li class="sidebar-item"><a href="resourceManager?sidebar=open">Resource manager</a></li>
+    <li class="sidebar-item"><a href="userManager?sidebar=open">User manager</a></li>
     <li class="sidebar-item"><a href="settings?sidebar=open">Settings</a></li>
     <li class="sidebar-item"><a href="about?sidebar=open">About</a></li>
     <li class="sidebar-item"><a href="logout?sidebar=open">Logout</a></li>

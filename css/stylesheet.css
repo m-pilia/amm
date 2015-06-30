@@ -1,7 +1,16 @@
+/************************************************
+ *          General aspect rules                *
+ ************************************************/
+
 /* default zero margin and paddinr everywere */
 *, *:before, *:after {
     margin: 0;
     padding: 0;
+}
+
+/* list items */
+li {
+    margin-left: 2em; /* space for the number/bullet */
 }
 
 /* links */
@@ -23,233 +32,9 @@ html {
     font-family: 'Raleway', sans-serif;
 }
 
-header {
-    background: linear-gradient(#00BFFF, #0099FF);
-    text-align: center;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    margin-top: 10px;
-    border-bottom: solid;
-    border-color: blue;
-
-    /* border radius */
-    -moz-border-top-right-radius: 20px;
-    -webkit-border-top-right: 20px;
-    border-top-right-radius: 20px;
-    -moz-border-bottom-right-radius: 20px;
-    -webkit-border-bottom-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-/* head title */
-header > div#head {
-    height: 10px;
-    line-height: 100px;
-    vertical-align: middle;
-    color: #E0FFFF;
-}
-
-/* logo image */
-header > div#logo > a > img {
-    height: 100px;
-    width: 100px;
-    float: left;
-
-    /* free space on the right of the logo */
-    margin-right: 10px;
-
-    /* center logo horizontally and vertically */
-    padding: 5px;
-}
-
-/* animate header resize */
-header * {
-  transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  -o-transition: all 0.2s;
-}
-
-body {
-    /* don't overflow horizontally when the sidebar is shown */
-    overflow-x: hidden;
-}
-
-#sidebar {
-    width: 200px;
-    height: 100%;
-    position: fixed;
-    top: 123px;
-    float:left;
-    background-color: #222222;
-    z-index: 0;
-}
-
-#sidebar-list {
-    list-style: none;
-}
-
-#content {
-    margin-top: 150px;
-    margin-left: 200px;
-    margin-right: 60px;
-    position: relative;
-    height: 100%;
-    background-color: #F5FFFA;
-    left: 20px;
-    z-index: 1;
-}
-
-#content > h2 {
-    text-align: center;
-    color: #1E90FF;
-}
-
-#footer-bar {
-    position: relative;
-    margin-bottom: 10px;
-    padding-top: 2px;
-    padding-bottom: 5px;
-    background: linear-gradient(#00BFFF, #0099FF);
-    text-align: center;
-    min-width: 100%;
-    display: inline-block;
-    color: #E0FFFF;
-    border-bottom: solid;
-    border-color: blue;
-    z-index: 1;
-
-    /* border radius */
-    -moz-border-top-right-radius: 20px;
-    -webkit-border-top-right-radius: 20px;
-    border-top-right-radius: 20px;
-    -moz-border-bottom-right-radius: 20px;
-    -webkit-border-bottom-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-#footer-wrapper {
-    background-color: #F5FFFA;
-    position: relative;
-    margin-top: 10px;
-    z-index: 1;
-}
-
-.form-contour {
-    border: 1px solid #AAAAAA;
-    padding: 10px;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#sidebar-name {
-    width: 180px;
-    padding: 10px;
-    margin-top: 10px;
-    font-size: 1.2em;
-    text-align: center;
-    color: white;
-}
-
-#avatar {
-    display: inline-block;
-    width: 180px;
-    height: auto;
-    margin: 10px;
-}
-
-header a#login-button, header a#logout-button {
-    float: right;
-    margin-right: 30px;
-}
-
-header a#login-button button, header a#logout-button button {
-    width: 100px;
-}
-
-.input-form {
-    text-align: center;
-}
-
-/* buttons in the login form */
-.input-form input, .input-form label, .input-field-big {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 250px;
-    font-size: 1.2em;
-}
-
-.input-field-big {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-/* input button which seems a plain link */
-.input-form input.linklike-button {
-    background: none;
-    border: none;
-    font-size: 1em;
-}
-
-.input-form input[type="file"] {
-    width: auto;
-    font-size: 1em;
-}
-
-#login-button-links {
-    margin-top: 5px;
-}
-
-.form-left {
-    float: left;
-    padding: 5px;
-}
-
-.form-right {
-    float: right;
-    padding: 5px;
-}
-
-.sidebar-item {
-    width: 200px;
-    border-top: 1px solid #111;
-    border-bottom: 1px solid #000;
-}
-
-.sidebar-item a {
-    display: block;
-    padding: 1em;
-    background:
-        linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
-    color: white;
-    font-size: 1.2em;
-    text-decoration: none;
-    transition: color 0.2s, background 0.5s;
-}
-
-.sidebar-item a:hover {
-    color: #1E90FF;
-    background:
-        linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(30,30,90,0.30) 100%);
-}
-
-/* Content moved right when showing the sidebar */
-#wrapped {
-    position: relative;
-    top: 20px;
-    display: inline-block;
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 100%;
-    height: 100%;
-    min-width: 100%;
-    background-color: #F5FFFA;
-    left: 0; /* needed for the sidebar animation */
-    z-index: 1;
-}
+/************************************************
+ *              Buttons rules                   *
+ ************************************************/
 
 .rc-button {
     margin-top: 4px;
@@ -280,6 +65,306 @@ header a#login-button button, header a#logout-button button {
     background: linear-gradient(#BBBBBB, #C0C0C0);
 }
 
+/************************************************
+ *              Header rules                    *
+ ************************************************/
+header {
+    background: linear-gradient(#00BFFF, #0099FF);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 110px;
+    margin-top: 10px;
+    border-bottom: solid;
+    border-color: blue;
+
+    /* border radius */
+    -moz-border-top-right-radius: 20px;
+    -webkit-border-top-right: 20px;
+    border-top-right-radius: 20px;
+    -moz-border-bottom-right-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+header h1 {
+    float: left;
+    height: 10px;
+    line-height: 100px;
+    vertical-align: middle;
+    color: #E0FFFF;
+}
+
+/* logo image */
+#logo-image {
+    height: 100px;
+    width: 100px;
+    float: left;
+    padding: 5px;
+    margin-right: 10px; /* free space on the right of the logo */
+}
+
+/* animate header resize */
+header, header * {
+  transition: height 0.2s, line-height 0.2s, width 0.2s, margin 0.2s;
+  -moz-transition: height 0.2s, line-height 0.2s, width 0.2s, margin 0.2s;
+  -webkit-transition: height 0.2s, line-height 0.2s, width 0.2s, margin 0.2s;
+  -o-transition: height 0.2s, line-height 0.2s, width 0.2s, margin 0.2s;
+}
+
+header #login-button, header #logout-button {
+    width: 100px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 34px;
+}
+
+/************************************************
+ *              Sidebar rules                   *
+ ************************************************/
+
+#sidebar {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 123px; /* is the header offset height */
+    float:left;
+    background-color: #222222;
+    z-index: 0;
+
+    transition: top 0.2s;
+    moz-transition: top 0.2s;
+    webkit-transition: top 0.2s;
+    o-transition: top 0.2s;
+}
+
+#sidebar-name {
+    width: 180px;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    color: white;
+}
+
+#avatar {
+    display: inline-block;
+    width: 180px;
+    height: auto;
+    margin: 10px;
+}
+
+#sidebar-list {
+    list-style: none;
+}
+
+#sidebar li {
+    margin-left: 0px;
+}
+
+.sidebar-item {
+    width: 200px;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #000;
+}
+
+.sidebar-item a {
+    display: block;
+    padding: 0.5em;
+    background:
+        linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.2s, background 0.5s;
+}
+
+.sidebar-item a:hover {
+    color: #1E90FF;
+    background:
+        linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(30,30,90,0.30) 100%);
+}
+
+/************************************************
+ *              Main body rules                 *
+ ************************************************/
+
+#trigger {
+    position: fixed;
+    left: 10px;
+    top: 133px;  /* is the header offset height + 15 px margin*/
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 2;
+
+    transition: left 0.2s, top 0.2s;
+    moz-transition: left 0.2s, top 0.2s;
+    webkit-transition: left 0.2s, top 0.2s;
+    o-transition: left 0.2s, top 0.2s;
+}
+
+body {
+    /* don't overflow horizontally when the sidebar is shown */
+    overflow-x: hidden;
+}
+
+
+#sliding {
+    position: relative;
+    margin-left: 0px;  /* hides the sidebar */
+    padding-top: 123px; /* this is the offset header height */
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #F5FFFA;
+    z-index: 1;
+
+    transition: margin-left 0.2s;
+    moz-transition: margin-left 0.2s;
+    webkit-transition: margin-left 0.2s;
+    o-transition: margin-left 0.2s;
+}
+
+#content {
+    position: relative;
+    margin-left: 30px;
+    margin-right: 60px;
+    padding-top: 20px;
+    height: 100%;
+    left: 20px;
+    z-index: 1;
+}
+
+#content > h2, h3 {
+    text-align: center;
+    color: #1E90FF;
+}
+
+.form-contour {
+    border: 1px solid #AAAAAA;
+    padding: 10px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/************************************************
+ *              Footer rules                    *
+ ************************************************/
+
+#footer-bar {
+    position: relative;
+    margin-bottom: 10px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    background: linear-gradient(#00BFFF, #0099FF);
+    text-align: center;
+    min-width: 100%;
+    display: inline-block;
+    color: #E0FFFF;
+    border-bottom: solid;
+    border-color: blue;
+    z-index: 1;
+
+    /* border radius */
+    -moz-border-top-right-radius: 20px;
+    -webkit-border-top-right-radius: 20px;
+    border-top-right-radius: 20px;
+    -moz-border-bottom-right-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#footer-wrapper {
+    background-color: #F5FFFA;
+    position: relative;
+    border-top: 10px;
+    z-index: 1;
+}
+
+#footer-credits {
+    display: inline-block;
+}
+
+#validation {
+    font-size: 0.8em;
+    float: right;
+    margin-right: 10px;
+    position: relative;
+    top: 50%;
+    transform: translateY(70%);
+}
+
+#validation a {
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+#validation img {
+    height: 12px;
+    width: 12px;
+}
+
+/************************************************
+ *          Login/register page rules           *
+ ************************************************/
+
+.input-form {
+    text-align: center;
+}
+
+/* buttons in the login form */
+.input-form input, .input-form label, .input-field-big {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 250px;
+    font-size: 1.2em;
+}
+
+#register-link, #forgotten-link {
+    line-height: 1.8em;
+}
+
+.input-field-big {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* input button which seems a plain link */
+.input-form input.linklike-button {
+    background: none;
+    border: none;
+    font-size: 1em;
+}
+
+.input-form input[type="file"] {
+    width: auto;
+    font-size: 1em;
+}
+
+.form-left {
+    float: left;
+    padding: 5px;
+}
+
+.form-right {
+    float: right;
+    padding: 5px;
+}
+
+#preview-image {
+    width: auto;
+    height: auto;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+/************************************************
+ *            Error messages rules              *
+ ************************************************/
+
 .error-page-message, .generic-page-message {
     text-align: center;
     font-size: 1.1em;
@@ -294,29 +379,22 @@ header a#login-button button, header a#logout-button button {
     width: 120px;
 }
 
-header h1 {
-    float: left;
-}
-
-.home-content {
-    display: block;
-    overflow: auto;
-    height: 100%;
-    text-align: center;
-    font-size: 1.1em;
-}
-
 .error-message {
     visibility: visible;
     height: auto;
     text-align: center;
     font-size: 1em;
     width: 250px;
-    background-color:#FFFF99;
+    background-color:#FFCC99;
     border: solid 0.1px;
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
+
+    border-radius: 5px;
+    moz-border-radius: 5px;
+    webkit-border-radius: 5px;
+    o-border-radius: 5px;
 }
 
 .confirm-message {
@@ -325,21 +403,37 @@ header h1 {
     width: 250px;
     background-color:#99FF99;
     border: solid 0.1px;
+    margin-top: 10px;
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
+
+    border-radius: 5px;
+    moz-border-radius: 5px;
+    webkit-border-radius: 5px;
+    o-border-radius: 5px;
+}
+
+#caps-warning {
+    visibility: visible;
+    height: auto;
+    text-align: center;
+    font-size: 1em;
+    width: 250px;
+    background-color:#FFFFBB;
+    border: solid 0.1px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 5px;
+    moz-border-radius: 5px;
+    webkit-border-radius: 5px;
+    o-border-radius: 5px;
 }
 
 .input-error {
-    background-color: #FF9999;
-}
-
-/* smooth transition (select all the error message div in the form pages) */
-input[id^="reg"][id*="field"] ~ div[id*="error"] {
-  transition: all 1s;
-  -moz-transition: all 1s;
-  -webkit-transition: all 1s;
-  -o-transition: all 1s;
+    background-color: #FFCC99;
 }
 
 /* smooth color change on invalid input fields */
@@ -351,20 +445,16 @@ input[id^="reg"][id*="field"] {
 }
 
 .error-hidden {
-    display: hidden;
-    visibility: hidden; /* needed for transition */
+    display: none;
     height: 0px; /* needed for transition */
     border: hidden;
     margin: 0px;
     padding: 0px;
 }
 
-#preview-image {
-    width: auto;
-    height: auto;
-    max-width: 150px;
-    max-height: 150px;
-}
+/************************************************
+ *            Settings page rules               *
+ ************************************************/
 
 .settings-div {
     float: left;
@@ -375,7 +465,7 @@ input[id^="reg"][id*="field"] {
 
 .settings-div-hidden {
     display: none;
-    visibility: none;
+    visibility: hidden;
 }
 
 .settings-block {
@@ -389,4 +479,312 @@ input[id^="reg"][id*="field"] {
 .settings-button {
     float: left;
     min-width: 280px;
+}
+
+/************************************************
+ *            Calendar page rules               *
+ ************************************************/
+
+#color-legend {
+    size: 0.5em;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.color-title {
+    padding-right: 10px;
+}
+
+.color-square {
+    display: inline-block;
+    border: 1px solid black;
+    width: 16px;
+    height: 16px;
+    position: relative;
+}
+
+#color-square-past {
+    background-color: #CCCCCC;
+}
+
+#color-square-available-1 {
+    /* draw a triangle in the upper right half of the square,
+     * using the border */
+    position: relative;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 16px 16px 0;
+    border-color: transparent #FFFFCC transparent transparent;
+}
+
+#color-square-user {
+    background-color: #99FFCC;
+}
+
+#color-square-admin {
+    background-color: #FF9999;
+}
+
+#calendar-table, #calendar-table td, #calendar-table tr, #calendar-table th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#calendar-table {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#calendar-table td {
+    padding: 5px;
+    width: 80px;
+    height: 1em;
+}
+
+#calendar-table th {
+    font-size: 0.8em;
+    width: 80px;
+}
+
+#calendar-table tr.odd-table-line {
+    background-color: #FFFFCC;
+}
+
+/* dotted line for the half hour division in the calendar */
+#calendar-table tr.odd-table-line, #calendar-table tr.odd-table-line td {
+    border-bottom: 1px dotted black;
+}
+
+/* dotted line for the half hour division in the calendar */
+#calendar-table tr.even-table-line, #calendar-table tr.even-table-line td {
+    border-top: 1px dotted black;
+}
+
+/* the events have not any dotted border */
+#calendar-table td.calendar-cell[data-status="busy"] {
+    border: 1px solid black;
+}
+
+.calendar-hour-cell {
+    background-color: #F5FFFA;
+}
+
+#calendar-table td.calendar-cell[data-status="past"] {
+    background-color: #CCCCCC;
+}
+
+#calendar-table .odd-table-line td.calendar-cell[data-status="past"] {
+    background-color: #CCCCCC;
+}
+
+#calendar-table td.calendar-cell[data-status="bookable"],
+#calendar-table td.calendar-cell[data-status="busy"] {
+    cursor: pointer;
+}
+
+#calendar-table td.calendar-cell[data-status="bookable"]:hover {
+    background-color: #99FF66;
+}
+
+#calendar-table td[data-event-type="User"] {
+    background-color: #99FFCC;
+}
+
+#calendar-table td[data-event-type="Admin"] {
+    background-color: #FF9999;
+}
+
+#date-picker-div {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#date-picker-div * {
+    display: inline-block;
+}
+
+
+/************************************************
+ *          Event display page rules            *
+ ************************************************/
+
+#event-display-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#event-display-container p {
+    margin-bottom: 5px;
+}
+
+#event-display {
+    display: inline-block;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.prop-name {
+    color: #1E90FF;
+    text-align: right;
+}
+
+label.prop-name {
+    width: auto;
+    vertical-align: top;
+}
+
+.prop-value {
+    text-align: left;
+}
+
+.prop-notes {
+    max-width: 25%;
+}
+
+/************************************************
+ *         Event creation page rules            *
+ ************************************************/
+
+#event-creation-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#create-event-button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.return-link {
+    display: inline-block;
+}
+
+/************************************************
+ *          Tabular container rules             *
+ ************************************************/
+
+.container-wrapper {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container-heading {
+    text-align: center;
+    color: #1E90FF;
+}
+
+.container {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/************************************************
+ *         Resource manager page rules          *
+ ************************************************/
+
+#resources div {
+    margin-bottom: 10px;
+}
+
+#resources div input[type="text"] {
+    width: 200px;
+}
+
+#add-button {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+#save-button {
+    width: 200px;
+}
+
+/************************************************
+ *        User management page rules            *
+ ************************************************/
+
+.users-box {
+    vertical-align: middle;
+}
+
+#users-table img[id="avatar"] {
+    width: 30px;
+    height: auto;
+}
+
+/************************************************
+ *              Homepage rules                  *
+ ************************************************/
+
+.home-content {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 3em;
+    margin-left: 25%;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    text-align: justify;
+    line-height: 1.5em;
+    font-size: 1.1em;
+}
+
+/* select all p that are preceded by another p */
+.home-content p+p {
+    margin-top: 20px;
+}
+
+.home-content li {
+    display: list-item;
+    list-style-type: square;
+}
+
+/* nested lists */
+.home-content ul li ul li {
+    list-style-type: disc;
+}
+
+.home-content h3 {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #AAAAAA;
+}
+
+#next-events-title {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #1E90FF;
+    font-weight: bold;
+}
+
+#next-events {
+    min-width: 50%;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+#next-events td, #next-events th {
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+td.event-date {
+    background-color: #F5FFFA;
+}
+
+#next-events tr.odd-table-line {
+    background-color: #FFFFCC;
 }

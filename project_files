@@ -1,5 +1,4 @@
 css/stylesheet.css
 php/view/master.php
 php/view/ViewDescriptor.php
-php/control/FrontController.php
-php/control/auth.php
+php/control/Controller.php
