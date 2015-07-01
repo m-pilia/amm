@@ -69,9 +69,9 @@
     <h3>Utilizzo</h3>
     <p>
         Nella homepage di ogni utente vengono visualizzati i suoi eventi
-        prenotati nell'arco dei prossimi sette giorni. Tramite la barra
-        laterale è possibile accedere alle varie pagine, che consentono
-        di accedere alle varie pagine. Le principali sono le seguenti:
+        prenotati per i prossimi sette giorni. Tramite la barra
+        laterale è possibile aprire le altre pagine, che consentono
+        di accedere alle varie funzionalità. Le principali sono le seguenti:
     </p>
     <ul>
         <li>
@@ -112,7 +112,7 @@
             Utilizzo di HTML 5 e CSS 3;
         </li>
         <li>
-            programmazione server side in PHP >= 5.5
+            programmazione server side in PHP >= 5.5;
         </li>
         <li>
             dati permanenti memorizzati su database MySQL tramite

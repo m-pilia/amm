@@ -1,3 +1,9 @@
+/*
+ * \file table.css
+ * @author Martino Pilia <martino.pilia@gmail.com>
+ * \brief This stylesheet provides class for a table-like layout.
+ */
+
 /* for a container with table-like behaviour */
 .view-table {
     display: table;

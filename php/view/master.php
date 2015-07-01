@@ -106,11 +106,11 @@ if (isset($_SESSION["user"]))
             </div>
         </div>
     </div>
-</body>
 
-<?php
-/* mantain the sidebar open if requested */
-if (isset($_REQUEST["sidebar"]) && $_REQUEST["sidebar"] == "open")
-    echo "<script type=\"text/javascript\">openSidebar();</script>";
-?>
+    <?php
+    /* mantain the sidebar open if requested */
+    if (isset($_REQUEST["sidebar"]) && $_REQUEST["sidebar"] == "open")
+        echo "<script type=\"text/javascript\">openSidebar();</script>";
+    ?>
+</body>
 </html>

@@ -1,3 +1,9 @@
+/*
+ * \file stylesheet.css
+ * @author Martino Pilia <martino.pilia@gmail.com>
+ * \brief This is the main stylesheet for the application.
+ */
+
 /************************************************
  *          General aspect rules                *
  ************************************************/
@@ -13,7 +19,7 @@ li {
     margin-left: 2em; /* space for the number/bullet */
 }
 
-/* links */
+/* links aspect */
 a, .linklike-button {
     color: #3B5998;
     text-decoration: none;
@@ -25,6 +31,7 @@ a:hover, .linklike-button:hover {
     text-decoration: underline;
 }
 
+/* general background and font */
 html {
     height: 100%;
     width: 100%;
@@ -33,9 +40,31 @@ html {
 }
 
 /************************************************
+ *               Media queries                  *
+ ************************************************/
+/* the layout is optimized for 800x600 and higher resolutions */
+
+@media (max-height: 800px) {
+    /* hide the avatar when the viewport is short, to free space in order
+     * to mantain all the links inside the sidebar visible */
+    #avatar {
+        display: none;
+    }
+}
+
+@media (max-width: 950px) {
+    /* hide the title in the header when there is not enough
+     * horizontal space */
+    header h1 {
+        display: none;
+    }
+}
+
+/************************************************
  *              Buttons rules                   *
  ************************************************/
 
+/* blue buttons */
 .rc-button {
     margin-top: 4px;
     text-align: center;
@@ -60,6 +89,7 @@ html {
     -webkit-transition: all 0.218s;
 }
 
+/* grey buttons */
 .st-button {
     color: #555555;
     background: linear-gradient(#BBBBBB, #C0C0C0);
@@ -68,6 +98,7 @@ html {
 /************************************************
  *              Header rules                    *
  ************************************************/
+
 header {
     background: linear-gradient(#00BFFF, #0099FF);
     text-align: center;
@@ -89,6 +120,7 @@ header {
     border-bottom-right-radius: 20px;
 }
 
+/* title inside the header */
 header h1 {
     float: left;
     height: 10px;
@@ -106,7 +138,7 @@ header h1 {
     margin-right: 10px; /* free space on the right of the logo */
 }
 
-/* animate header resize */
+/* animate the header resize */
 header, header * {
   transition: height 0.2s, line-height 0.2s, width 0.2s, margin 0.2s;
   -moz-transition: height 0.2s, line-height 0.2s, width 0.2s, margin 0.2s;
@@ -114,6 +146,7 @@ header, header * {
   -o-transition: height 0.2s, line-height 0.2s, width 0.2s, margin 0.2s;
 }
 
+/* login/logout buttons inside the header */
 header #login-button, header #logout-button {
     width: 100px;
     float: right;
@@ -150,7 +183,6 @@ header #login-button, header #logout-button {
 }
 
 #avatar {
-    display: inline-block;
     width: 180px;
     height: auto;
     margin: 10px;
@@ -292,9 +324,7 @@ body {
     font-size: 0.8em;
     float: right;
     margin-right: 10px;
-    position: relative;
-    top: 50%;
-    transform: translateY(70%);
+    line-height: 3em;
 }
 
 #validation a {
@@ -485,6 +515,7 @@ input[id^="reg"][id*="field"] {
  *            Calendar page rules               *
  ************************************************/
 
+/* div containing the legend for colors */
 #color-legend {
     size: 0.5em;
     display: inline-block;
@@ -493,10 +524,12 @@ input[id^="reg"][id*="field"] {
     margin-top: 20px;
 }
 
+/* name of a color in the legend */
 .color-title {
     padding-right: 10px;
 }
 
+/* color sample in the legend */
 .color-square {
     display: inline-block;
     border: 1px solid black;
@@ -505,10 +538,12 @@ input[id^="reg"][id*="field"] {
     position: relative;
 }
 
+/* color sample for past hours */
 #color-square-past {
     background-color: #CCCCCC;
 }
 
+/* color sample for available hours */
 #color-square-available-1 {
     /* draw a triangle in the upper right half of the square,
      * using the border */
@@ -520,14 +555,17 @@ input[id^="reg"][id*="field"] {
     border-color: transparent #FFFFCC transparent transparent;
 }
 
+/* color sample for user-owned hours */
 #color-square-user {
     background-color: #99FFCC;
 }
 
+/* color sample for admin-owned hours */
 #color-square-admin {
     background-color: #FF9999;
 }
 
+/* border settings in the calendar table */
 #calendar-table, #calendar-table td, #calendar-table tr, #calendar-table th {
     border: 1px solid black;
     border-collapse: collapse;
@@ -571,35 +609,43 @@ input[id^="reg"][id*="field"] {
     border: 1px solid black;
 }
 
+/* color for free hours */
 .calendar-hour-cell {
     background-color: #F5FFFA;
 }
 
+/* color for past hours in even lines*/
 #calendar-table td.calendar-cell[data-status="past"] {
     background-color: #CCCCCC;
 }
 
+/* color for past hours in odd lines */
 #calendar-table .odd-table-line td.calendar-cell[data-status="past"] {
     background-color: #CCCCCC;
 }
 
+/* cursor pointer in bookable hours */
 #calendar-table td.calendar-cell[data-status="bookable"],
 #calendar-table td.calendar-cell[data-status="busy"] {
     cursor: pointer;
 }
 
+/* highlight avaible hours on mouse hover */
 #calendar-table td.calendar-cell[data-status="bookable"]:hover {
     background-color: #99FF66;
 }
 
+/* color for user events in the calendar */
 #calendar-table td[data-event-type="User"] {
     background-color: #99FFCC;
 }
 
+/* color for admin events in the calendar */
 #calendar-table td[data-event-type="Admin"] {
     background-color: #FF9999;
 }
 
+/* date picker position */
 #date-picker-div {
     text-align: center;
     margin-top: 20px;
@@ -739,8 +785,8 @@ label.prop-name {
     font-size: 1.1em;
 }
 
-/* select all p that are preceded by another p */
-.home-content p+p {
+/* select all p that are preceded by another p or by an ul */
+.home-content p+p, .home-content ul+p {
     margin-top: 20px;
 }
 
@@ -787,4 +833,40 @@ td.event-date {
 
 #next-events tr.odd-table-line {
     background-color: #FFFFCC;
+}
+
+/************************************************
+ *              About page rules                *
+ ************************************************/
+
+#about-content {
+    text-align: center;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1em;
+}
+
+#about-content p {
+    margin-top: 0.5em;
+}
+
+#about-content h4 {
+    color: #1E90FF;
+    margin-top: 2em;
+}
+
+#image-credits {
+    display: inline-block;
+    text-align: left;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-link {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 0.1em;
 }

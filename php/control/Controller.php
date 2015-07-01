@@ -277,11 +277,14 @@ class Controller {
         exit();
     }
 
-    /*!
+    /**
      * \brief Write the login page.
-     * @param prevUsername Username in a previous wrong request.
-     * @param wrongUsername Message for the username error (Null for no error).
-     * @param wrongPassword Message for the password error (Null for no error).
+     * @param array  $req           The $_REQUEST array.
+     * @param string $prevUsername  Username in a previous wrong request.
+     * @param string $wrongUsername Message for the username error (Null for
+     *                              no error).
+     * @param string $wrongPassword Message for the password error (Null for
+     *                              no error).
      */
     private static function login($req, $prevUsername, $wrongUsername,
                 $wrongPassword) {
@@ -356,6 +359,10 @@ class Controller {
         exit();
     }
 
+    /**
+     * \brief Write the logout page.
+     * @param array $req The $_REQUEST array.
+     */
     private static function logout() {
         if (!isset($_SESSION[self::USER]) || $_SESSION[self::USER] == Null) {
             self::write403("logout");
@@ -384,6 +391,10 @@ class Controller {
         header("refresh:3; url=$protocol://$host$folder/home");
     }
 
+    /**
+     * \brief Write the homepage.
+     * @param array $req The $_REQUEST array.
+     */
     private static function home() {
         if (isset($_SESSION[self::USER]) && $_SESSION[self::USER] != Null)
             $role = $_SESSION[self::USER]->getRole();
@@ -398,6 +409,10 @@ class Controller {
         exit();
     }
 
+    /**
+     * \brief Write the about page.
+     * @param array $req The $_REQUEST array.
+     */
     private static function about() {
         $vd = new ViewDescriptor();
         $vd->setTitle("About");
@@ -412,6 +427,10 @@ class Controller {
         exit();
     }
 
+    /**
+     * \brief Manage registration.
+     * @param array $req The $_REQUEST array.
+     */
     private static function registration(&$req) {
         require __DIR__ . "/../settings.php";
         $protocol = self::getProtocol();
@@ -521,6 +540,17 @@ class Controller {
         exit();
     }
 
+    /**
+     * \brief Manage the password reset.
+     * @param array $req The $_REQUEST array.
+     *
+     * This method manages the password reset procedure. If the user asks
+     * for a password reset in the web page, a reset token is set for him
+     * in the database and a confirmation email is sent to him. When the
+     * user opens the link in the confirmation mail, his password is
+     * changed with a random one, and the new password is sent to the
+     * user with another email.
+     */
     private static function reset(&$req) {
         $protocol = self::getProtocol();
         $host = self::getHost();
@@ -690,6 +720,10 @@ class Controller {
         }
     }
 
+    /**
+     * \brief Show the setings page and manage settings changes.
+     * @param array $req The $_REQUEST array.
+     */
     private static function settings(&$req) {
         require __DIR__ . "/../settings.php";
 
@@ -762,6 +796,10 @@ class Controller {
         include_once __DIR__ . '/../view/master.php';
     }
 
+    /**
+     * \brief Show the calendar page.
+     * @param array $req The $_REQUEST array.
+     */
     private static function calendar(&$req) {
 
         /* eventual alert message */
@@ -1070,6 +1108,10 @@ class Controller {
         break;
     }
 
+    /**
+     * \brief Show the page with an event's details.
+     * @param array $req The $_REQUEST array.
+     */
     private static function displayEvent(&$req) {
         if (!isset($req['id'])
                 || !filter_var($req['id'], FILTER_VALIDATE_INT)) {
@@ -1103,6 +1145,10 @@ class Controller {
         }
     }
 
+    /**
+     * \brief Show the resource management page.
+     * @param array $req The $_REQUEST array.
+     */
     private static function resourceManager(&$req) {
         /* handle commands */
         if (isset($req[self::CMD])) {
@@ -1159,6 +1205,10 @@ class Controller {
         exit();
     }
 
+    /**
+     * \brief Show the user management page.
+     * @param array $req The $_REQUEST array.
+     */
     private static function userManager(&$req) {
         try {
             $users = User::getUsers();
