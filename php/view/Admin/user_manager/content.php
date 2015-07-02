@@ -35,7 +35,9 @@
                 /* show a row with the informations for the user */
                 echo <<<EOF
                 <div class="users-box view-row">
-                    <img id="avatar" src="$avatar" alt="$username's avatar"/>
+                    <img id="avatar-mini"
+                         src="$avatar"
+                         alt="$username's avatar"/>
                     <span>$username</span>
                     <span>$first</span>
                     <span>$last</span>

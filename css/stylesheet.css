@@ -763,7 +763,7 @@ label.prop-name {
     vertical-align: middle;
 }
 
-#users-table img[id="avatar"] {
+#users-table img[id="avatar-mini"] {
     width: 30px;
     height: auto;
 }
@@ -776,8 +776,9 @@ label.prop-name {
     display: block;
     margin-top: 1em;
     margin-bottom: 3em;
-    margin-left: 25%;
-    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80ch;
     height: 100%;
     overflow: auto;
     text-align: justify;
@@ -841,7 +842,7 @@ td.event-date {
 
 #about-content {
     text-align: center;
-    width: 75%;
+    max-width: 80ch;
     margin-left: auto;
     margin-right: auto;
     font-size: 1.1em;
