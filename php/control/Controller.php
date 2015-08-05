@@ -1185,7 +1185,7 @@ class Controller {
                 /* get the names for the new resources */
                 foreach ($newKeys as $k)
                     /* note: this is a string */
-                    $toBeAdded[] = $req[$k];
+                    $toBeAdded[] = filter_var($req[$k], FILTER_SANITIZE_STRING);
 
                 /* validate new names and update resources in the database */
                 Resource::updateResources($toBeAdded,

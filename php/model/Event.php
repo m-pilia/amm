@@ -333,6 +333,8 @@ class Event {
         if (!$notes || !is_string($notes))
             $notes = Null;
         else {
+            /* remove html tags */
+            $notes = filter_var($notes, FILTER_SANITIZE_STRING);
             /* trim when too long */
             $notes = mb_strimwidth($notes, 0, $notesLen - 1, "");
         }
